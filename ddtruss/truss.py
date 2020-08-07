@@ -176,7 +176,7 @@ class Truss:
             eps[i] = self.B[i] @ u_
         return eps
 
-    def plot(self, ax=None, u=None, eps=None, points_id=False, lines_id=False):
+    def plot(self, ax=None, u=None, eps=None, points_id=False, lines_id=False, line_style=None):
         import matplotlib.pyplot as plt
 
         if ax is None:
@@ -198,6 +198,8 @@ class Truss:
             if eps is not None and u is None:
                 style = "-"
                 color = colors[i]
+            if line_style is not None:
+                style = line_style
             ax.plot(coords[:, 0], coords[:, 1], style, color=color)
             if lines_id:
                 centroid = np.mean(coords, axis=0)
